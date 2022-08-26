@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         //Caso ela não esteja vazia, entra no if
         if(f != null) {
             //Gerando um URI para o arquivo da foto
-            Uri fUri = FileProvider.getUriForFile(MainActivity.this, "rodrigues.rafael.fileprovider", f);
+            Uri fUri = FileProvider.getUriForFile(MainActivity.this, "rodrigues.rafael.galeria.fileprovider", f);
             //Intent para disparar o app da câmera
             Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             //Passando o URI para o app da câmera junto ao intent
