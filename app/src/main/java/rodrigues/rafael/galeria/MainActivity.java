@@ -3,13 +3,25 @@ package rodrigues.rafael.galeria;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.io.File;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    List<String> photos = new ArrayList<>();
+
+    MainAdapter mainAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +32,29 @@ public class MainActivity extends AppCompatActivity {
         //Seta a toolbar como padrão
         setSupportActionBar(toolbar);
 
+        //Lendo a lista de fotos já salvas e adicionando-as em outra lista.
+        File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File[] files = dir.listFiles();
+        for(int i = 0; i < files.length; i++) {
+            photos.add(files[i].getAbsolutePath());
+        }
 
+        //Criando o mainAdapter e setando ele no RecycleView
+        mainAdapter = new MainAdapter(MainActivity.this, photos);
+
+        RecyclerView rvGallery = findViewById(R.id.rvGallery);
+        rvGallery.setAdapter(mainAdapter);
+
+        //Calculando a quantidade de colunas de fotos que cabem na tela do celular
+        float w = getResources().getDimension(R.dimen.itemWidth);
+        int numberOfColumns = Utils.calculateNoOfColumns(MainActivity.this, w);
+        //Configurando o RecycleView para exibir as fotos em formato GRID, considerando o número
+        // máximo das colunas calculadas previamente
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this, numberOfColumns);
+        rvGallery.setLayoutManager(gridLayoutManager);
     }
+
+
 
     //Método para criar um "inflador de menu"
     @Override
