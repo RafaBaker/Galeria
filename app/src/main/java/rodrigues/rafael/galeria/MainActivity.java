@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
@@ -54,7 +55,15 @@ public class MainActivity extends AppCompatActivity {
         rvGallery.setLayoutManager(gridLayoutManager);
     }
 
+    //Método que recebe como parametro a foto que deve ser aberta.
+    // É chamado dentro do onBindviewHolder na classe MainAdapter, quando o usuário clica na foto
+    //O caminho é passado via Intent
 
+    public void startPhotoActivity(String photoPath) {
+        Intent i = new Intent(MainActivity.this, PhotoActivity.class);
+        i.putExtra("photo_path", photoPath);
+        startActivity(i);
+    }
 
     //Método para criar um "inflador de menu"
     @Override
