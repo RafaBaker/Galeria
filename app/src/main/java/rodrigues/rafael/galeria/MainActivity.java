@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     static int RESULT_TAKE_PICTURE = 1;
     String currentPhotoPath;
 
-    static int RESULT_REQUEST_PERMISSION = 2;
+    static int RESULT_REQUEST_PERMISSION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
