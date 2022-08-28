@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/opShare"
-        android:icon="@android:drawable/ic_menu_share"
+        android:icon="?attr/actionModeShareDrawable"
         android:title="Compartilhar"
         app:showAsAction="ifRoom" />
 </menu>
