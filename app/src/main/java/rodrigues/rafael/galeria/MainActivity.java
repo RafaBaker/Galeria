@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         checkForPermissions(permissions);
 
+
         //Lendo a lista de fotos já salvas e adicionando-as em outra lista.
         File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File[] files = dir.listFiles();
