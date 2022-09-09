@@ -1,3 +1,3 @@
 # Galeria
 
-Atividade 5 - Dispositivos Móveis
+Dispositivos Móveis - Atividade 5 
